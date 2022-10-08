@@ -64,36 +64,26 @@ class _SearchListScreenState extends State<SearchListScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            searchController.text.isNotEmpty && searchedLists.isEmpty
-                ? "No Results Found!!!".text.bold.xl.makeCentered()
-                : ListView.separated(
-                    shrinkWrap: true,
-                    itemCount: searchController.text.isNotEmpty
-                        ? searchedLists.length
-                        : lists.length,
-                    separatorBuilder: (context, index) {
-                      return const VxDivider();
-                    },
-                    itemBuilder: ((context, index) {
-                      return searchController.text.isNotEmpty
-                          ? searchedLists[index]
-                              .text
-                              .xl2
-                              .make()
-                              .pSymmetric(v: 20, h: 15)
-                          : lists[index]
-                              .text
-                              .xl2
-                              .make()
-                              .pSymmetric(v: 20, h: 15);
-                    }),
-                  ),
-          ],
-        ),
-      ),
+      body: searchController.text.isNotEmpty && searchedLists.isEmpty
+          ? "No Results Found!!!".text.xl.makeCentered()
+          : ListView.separated(
+              shrinkWrap: true,
+              itemCount: searchController.text.isNotEmpty
+                  ? searchedLists.length
+                  : lists.length,
+              separatorBuilder: (context, index) {
+                return const VxDivider();
+              },
+              itemBuilder: ((context, index) {
+                return searchController.text.isNotEmpty
+                    ? searchedLists[index]
+                        .text
+                        .lg
+                        .make()
+                        .pSymmetric(v: 20, h: 15)
+                    : lists[index].text.lg.make().pSymmetric(v: 20, h: 15);
+              }),
+            ),
     );
   }
 }
